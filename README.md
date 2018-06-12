@@ -61,7 +61,7 @@ This specifies we want nextflow to run:
 
 You can find the repository for the pipeline [here](https://github.com/nf-core/methylseq/tree/dev) and more nf-core pipelines on the [here](http://nf-co.re/).
 
-Whilst the pipeline runs you can examine the [execution report](assets/MethylSeq_report.html), [timeline](assets/MethylSeq_timeline.html) and [MultiQC report](assets/multiqc_report.html) for the same pipeline in the links.
+Whilst the pipeline runs you can examine the [execution report](https://raw.githubusercontent.com/nextflow-io/rmghc-2018/master/assets/MethylSeq_report.html), [timeline](https://raw.githubusercontent.com/nextflow-io/rmghc-2018/master/assets/MethylSeq_timeline.html) and [MultiQC report](https://raw.githubusercontent.com/nextflow-io/rmghc-2018/master/assets/MethylSeq_report.html) for the same pipeline in the links.
 
 
 Note that we could have just as easily run with the singularity engine using:
