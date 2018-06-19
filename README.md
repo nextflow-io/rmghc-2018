@@ -16,69 +16,36 @@ During this period, the only requirement is a computer with ssh access.
 If you wish to go through the workshop on your own machine at any other time, the prerequisties are as follows:
 
 * Java 8 
+* Singularity 2.3.x (or higher) or
 * Docker engine 1.10.x (or higher) 
-* Singularity 2.3.x (optional)
 
 ## Login to your AWS instance (during workshop only): 
 
 1. SSH in you instance node: 
 
-     `ssh login@123.456.789.012` #TBD
+     `ssh student@your.personal.instance.IP`
+
+See the slack channel for your personal instance IP.
     
-   
-## Installation 
+## Nextflow Installation 
 
 Install Nextflow by using the following command: 
 
 ```
 curl -fsSL get.nextflow.io | bash
 ```
-    
+  
 The above snippet creates the `nextflow` launcher in the current directory. 
 Complete the installation moving it into a directory on your `PATH` eg: 
 
 ```
-
-mv nextflow $HOME/bin
+mkdir bin
+mv nextflow $HOME/bin/
 ``` 
    
-## Nextflow demo
-
-Before we get into the hand-ons section, let's first look at how to run existing pipelines with Nextflow.
-
-In this example we will take a best practice Bisulfite-Seq pipeline from the [nf-core](http://nf-co.re) collection of Nextflow pipelines.
-
-```             
-nextflow run nf-core/methylseq -r dev -profile test,docker
-```
-
-This specifies we want nextflow to run:
-
-* the pipeline in the GitHub repository `nf-core/methylseq`
-* with the branch named `dev`
-* and the parameters specified with the profile named `test`
-* and the container engine specified with the profile named `docker`
-
-You can find the repository for the pipeline [here](https://github.com/nf-core/methylseq/tree/dev) and more nf-core pipelines on the [here](http://nf-co.re/).
-
-Whilst the pipeline runs you can examine the [execution report](https://cdn.rawgit.com/nextflow-io/rmghc-2018/master/assets/MethylSeq_report.html), [timeline](https://cdn.rawgit.com/nextflow-io/rmghc-2018/master/assets/MethylSeq_timeline.html) and [MultiQC report](https://cdn.rawgit.com/nextflow-io/rmghc-2018/master/assets/multiqc_report.html) for the same pipeline in the links.
-
-
-Note that we could have just as easily run with the singularity engine using:
-
-```             
-nextflow run nf-core/methylseq -r dev -profile test,singularity
-```
-
-or even with conda using: 
-
-```             
-nextflow run nf-core/methylseq -r dev -profile test,conda
-```
-
 ## Nextflow hands-on 
 
-Now moving to the hand-ons section where we will implement a proof-of-concept RNA-Seq pipeline.
+We moving to the hand-ons section where we will implement a proof-of-concept RNA-Seq pipeline.
 
 First we clone this repository with the following command: 
 
@@ -152,25 +119,25 @@ nextflow run script2.nf
 
 The execution will fail because Salmon is not installed in your environment. 
 
-Add the command line option `-with-docker` to launch the execution through a Docker container
+Add the command line option `-with-singularity` to launch the execution through a Singularity/Docker image
 as shown below: 
 
 ```
-nextflow run script2.nf -with-docker
+nextflow run script2.nf -with-singularity
 ```
 
 This time it works because it uses the Docker container `nextflow/rnaseq-nf` defined in the 
 `nextflow.config` file. 
 
-In order to avoid to add the option `-with-docker` add the following line in the `nextflow.config` file: 
+In order to avoid to add the option `-with-singularity` add the following line in the `nextflow.config` file: 
 
 ```
-docker.enabled = true
+singularity.enabled = true
 ```
 
 #### Exercise 2.1 
 
-Enable the Docker execution by default adding the above setting in the `nextflow.config` file.
+Enable the Singularity execution by default adding the above setting in the `nextflow.config` file.
 
 
 #### Exercise 2.2
