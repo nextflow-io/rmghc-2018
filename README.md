@@ -51,7 +51,6 @@ First we clone this repository with the following command:
 
 ```
 git clone https://github.com/nextflow-io/rmghc-2018.git && cd rmghc-2018
-
 ```
 
 Our pipeline will:
