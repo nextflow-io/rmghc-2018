@@ -141,7 +141,7 @@ Enable the Singularity execution by default adding the above setting in the `nex
 
 #### Exercise 2.2
 
-Use the command `tree -a work` to see how Nextflow organises the process work directory. 
+Examine the `work` directory to see how Nextflow organises tasks in directories.
  
 #### Recap 
 
